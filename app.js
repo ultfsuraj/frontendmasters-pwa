@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", event => {
         notes = JSON.parse(localStorage.getItem("notes"));
     }
     renderNotes();
- 
+
     document.querySelector("form").addEventListener("submit", event => {
         event.preventDefault();
         const note = document.querySelector("textarea").value;
-        if (note.length==0) {
+        if (note.length == 0) {
             alert("You didn't input any content");
         } else {
             notes.push(note);
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", event => {
 function renderNotes() {
     const ul = document.querySelector("#notes");
     ul.innerHTML = "";
-    notes.forEach( (note, index) => {
+    notes.forEach((note, index) => {
         // Create the note LI
         const li = document.createElement("li");
         li.innerHTML = note;
