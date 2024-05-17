@@ -1,0 +1,20 @@
+{
+  "name": "frontendmasters-pwa",
+  "version": "1.0.0",
+  "description": "Initial starting code for the course is on the `starting-code` branch.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ultfsuraj/frontendmasters-pwa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ultfsuraj/frontendmasters-pwa/issues"
+  },
+  "homepage": "https://github.com/ultfsuraj/frontendmasters-pwa#readme"
+}

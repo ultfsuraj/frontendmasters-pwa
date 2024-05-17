@@ -5,7 +5,7 @@ const assets = ["/","style.css","app.js","sw-register.js",
 // storing assets
 self.addEventListener("install", (event)=>{
     // browser kills within 40s. if there's a large file it may not cache, so waitUntill
-    event.waitUntill(
+    event.waitUntil(
         caches.open("assets").then(cache=>{
             cache.addAll(assets)
         })
