@@ -1,7 +1,7 @@
 var notes = [];
 
 // Registering all the event handlers when the page loads
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener("DOMContentLoaded", event => { 
     if (localStorage.getItem("notes")) {
         notes = JSON.parse(localStorage.getItem("notes"));
     }

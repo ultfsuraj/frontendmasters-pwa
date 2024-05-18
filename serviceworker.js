@@ -19,21 +19,23 @@ self.addEventListener('install', (event) => {
     )
 })
 
-// serve content
-// Cache first strategy
-self.addEventListener('fetch', (event) => {
-    if (event.request.url == 'http://127.0.0.1:5500/fake') {
-        const response = new Response(
-            `Dummy Response from ${event.request.url}`
-        )
-        event.respondWith(response)
-    } else {
-        event.respondWith(
-            caches
-                .match(event.request) // searching in the cache
-                .then((response) => {
-                    return response || fetch(event.request)
-                })
-        )
-    }
-})
+
+// State while revalidate strategy
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then( response => {
+                // Even if the response is in the cache, we fetch it
+                // and update the cache for future usage
+                const fetchPromise = fetch(event.request).then(
+                     networkResponse => {
+                        caches.open("assets").then( cache => {
+                            cache.put(event.request, networkResponse.clone());
+                            return networkResponse;
+                        });
+                    });
+                // We use the currently cached version if it's there
+                return response || fetchPromise; // cached or a network fetch
+            })
+        );
+    }); 
